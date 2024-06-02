@@ -29,5 +29,35 @@ namespace Solutions
             Console.ReadLine();
 
         }
+
+        public void TicketPriceCalculator()
+        {
+            Console.WriteLine("Enter your age: ");
+            int age;
+
+            if (int.TryParse(Console.ReadLine(), out age))
+            {
+                double ticketPrice;
+
+                if (age <= 12 || age >= 65)
+                    ticketPrice = 7.0;
+
+                else
+                    ticketPrice = 10.0;
+
+                Console.WriteLine("The price of the ticket for your {0} is {1}", age, ticketPrice);
+
+            }
+
+            else
+            {
+                Console.WriteLine("Invalid Input! Please enter a valid age");
+            }
+
+            Console.ReadLine();
+        }
+
+
+
     }
 }
