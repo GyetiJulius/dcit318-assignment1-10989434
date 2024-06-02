@@ -59,6 +59,57 @@ namespace Solutions
             Console.ReadLine();
         }
 
+        public void TriangleTypeIdentifier()
+        {
+            Console.Write("Enter the length of the first side: ");
+            double side1 = GetValidSideLength();
+
+            Console.Write("Enter the length of the second side: ");
+            double side2 = GetValidSideLength();
+
+            Console.Write("Enter the length of the third side: ");
+            double side3 = GetValidSideLength();
+
+            if (IsValidTriangle(side1, side2, side3))
+            {
+                if (side1 == side2 && side2 == side3)
+                {
+                    Console.WriteLine("The triangle is equilateral.");
+                }
+                else if (side1 == side2 || side1 == side3 || side2 == side3)
+                {
+                    Console.WriteLine("The triangle is isosceles.");
+                }
+                else
+                {
+                    Console.WriteLine("The triangle is scalene.");
+                }
+            }
+            else
+            {
+                Console.WriteLine("The given side lengths do not form a valid triangle.");
+            }
+
+            Console.ReadLine();
+        }
+
+        static double GetValidSideLength()
+        {
+            double sideLength;
+            while (!double.TryParse(Console.ReadLine(), out sideLength) || sideLength <= 0)
+            {
+                Console.Write("Invalid input! Enter a positive number: ");
+            }
+            return sideLength;
+        }
+
+        static bool IsValidTriangle(double side1, double side2, double side3)
+        {
+            // Check the triangle inequality theorem
+            return side1 + side2 > side3 && side1 + side3 > side2 && side2 + side3 > side1;
+        }
+    }
+
 
 
     }
